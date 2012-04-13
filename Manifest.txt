@@ -1,0 +1,9 @@
+README.rdoc
+LICENSE
+History.rdoc
+Manifest.txt
+Rakefile
+lib/flyweight.rb
+test/test_helper.rb
+test/test_flyweight.rb
+example/example.rb

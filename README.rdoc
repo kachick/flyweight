@@ -1,0 +1,55 @@
+= Flyweight
+
+* http://github.com/kachick/flyweight
+* http://rubygems.org/gems/flyweight
+* http://rubyforge.org/projects/flyweight
+
+== Description
+
+A tiny template for the "Flyweight Pattern"
+
+== Usage
+
+* setup
+
+    require 'flyweight'
+
+* overview
+
+    class Material
+      include Flyweight
+
+      def initialize(looks, price)
+        @looks, @price = looks, price
+      end
+    end
+
+    a = Material.value :metal, 2000
+    b = Material.value :metal, 2000
+    c = Material.new   :metal, 2000
+    d = Material.value :paper, 50
+    a == b     #=> true
+    a.equal? b #=> true
+    a == c     #=> true
+    a.equal? c #=> false
+    a == d     #=> false
+    a.equal? d #=> false
+    
+== Requirements
+
+* Ruby 1.9.2 or later
+  
+  target release versions
+  
+  * 1.9.3-p125
+  * 1.9.2-p290
+
+== Installation
+
+* gem install flyweight
+
+== License
+
+Copyright (C) 2012  Kenichi Kamiya
+
+The MIT/X11 License (See the file LICENSE)

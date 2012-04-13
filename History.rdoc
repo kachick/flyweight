@@ -1,3 +1,9 @@
+=== 0.0.2 2012-04-14
+
+* modify:
+  * .value -> .intern, .value_for
+  * #==, #eql?, #hash
+
 === 0.0.1 2012-04-13
 
 * 1 major enhancement:

@@ -12,10 +12,10 @@ class Material
   end
 end
 
-a = Material.value :metal, 2000
-b = Material.value :metal, 2000
+a = Material.intern :metal, 2000
+b = Material.intern :metal, 2000
 c = Material.new   :metal, 2000
-d = Material.value :paper, 50
+d = Material.intern :paper, 50
 p a == b     #=> true
 p a.equal? b #=> true
 p a == c     #=> true

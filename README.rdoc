@@ -24,10 +24,10 @@ A tiny template for the "Flyweight Pattern"
       end
     end
 
-    a = Material.value :metal, 2000
-    b = Material.value :metal, 2000
-    c = Material.new   :metal, 2000
-    d = Material.value :paper, 50
+    a = Material.intern :metal, 2000
+    b = Material.intern :metal, 2000
+    c = Material.new    :metal, 2000
+    d = Material.intern :paper, 50
     a == b     #=> true
     a.equal? b #=> true
     a == c     #=> true

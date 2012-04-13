@@ -23,14 +23,15 @@
 #   a == d     #=> false
 #   a.equal? d #=> false
 module Flyweight
-  VERSION = '0.0.1'.freeze
-
+  VERSION = '0.0.2'.freeze
+  POOL_NAME = :FLYWEIGHT_POOL
+  
   module Eigen
-    def value(*values)
-      pool = if singleton_class.const_defined? :FLYWEIGHT_POOL, false
-               singleton_class::FLYWEIGHT_POOL
+    def intern(*values)
+      pool = if singleton_class.const_defined? POOL_NAME, false
+               singleton_class.const_get POOL_NAME
              else
-               singleton_class.const_set :FLYWEIGHT_POOL, {}
+               singleton_class.const_set POOL_NAME, {}
              end
 
       if pool.has_key? values
@@ -39,21 +40,44 @@ module Flyweight
         pool[values] = new(*values)
       end
     end
-  end
 
-  class << self
-    def included(mod)
-      raise ArgumentError unless mod.kind_of? ::Module
-      
-      mod.extend Eigen
+    alias_method :value_for, :intern
+    
+    private
+    
+    def inherited(klass)
+      klass.singleton_class.const_set POOL_NAME, {}
     end
   end
 
-  def ==(other)
-    sources_for = ->obj{
-      obj.instance_variables.map{|var|obj.instance_variable_get var}
-    }
+  class << self
+    private
+    
+    def included(mod)
+      raise ArgumentError unless mod.kind_of? ::Module
+      
+      mod.module_eval do
+        extend Eigen
+        singleton_class.const_set POOL_NAME, {}
+      end
+    end
+  end
 
-    sources_for[self] == sources_for[other]
+  def eql?(other)
+    self.class == other.class && (
+      sources_for = ->obj{
+        obj.instance_variables.map{|var|obj.instance_variable_get var}
+      }
+
+      sources_for[self].__send__ __callee__, sources_for[other]
+    )
+  end
+  
+  alias_method :==, :eql?
+  
+  def hash
+    instance_variables.inject(instance_variables.hash){|sum, var|
+      instance_variable_get(var).hash ^ sum
+    }
   end
 end

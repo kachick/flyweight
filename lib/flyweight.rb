@@ -46,7 +46,6 @@ module Flyweight
       raise ArgumentError unless mod.kind_of? ::Module
       
       mod.extend Eigen
-     # mod.singleton_class.const_set :FLYWEIGHT_POOL, {}
     end
   end
 

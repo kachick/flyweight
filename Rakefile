@@ -1,4 +1,4 @@
-gem 'hoe', '~> 3.0.1'
+gem 'hoe', '~> 3.0.3'
 require 'hoe'
 require 'fileutils'
 

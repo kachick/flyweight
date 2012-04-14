@@ -23,7 +23,7 @@
 #   a == d     #=> false
 #   a.equal? d #=> false
 module Flyweight
-  VERSION = '0.0.3.a'.freeze
+  VERSION = '0.0.3'.freeze
   POOL_NAME = :FLYWEIGHT_POOL
   
   module Eigen

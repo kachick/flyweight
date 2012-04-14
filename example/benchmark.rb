@@ -14,7 +14,7 @@ class Material
 end
 
 class HeavyParts
-  DATA = 'str' * 10000000
+  DATA = 'str' * 100000000
   
   def initialize
     @content = DATA.dup
@@ -25,50 +25,58 @@ TIMES = 100000
 
 Benchmark.bm do |bm| 
   bm.report 'Light Instant .new' do
+    klass = Class.new Material
     TIMES.times do
-      Material.new :metal, 2000
+      klass.new :metal, 2000
     end
   end
   
   bm.report 'Light Instant .intern' do
+    klass = Class.new Material
     TIMES.times do
-      Material.intern :metal, 2000
+      klass.intern :metal, 2000
     end
   end
   
   bm.report 'Light Keep .new' do
+    klass = Class.new Material
     TIMES.times.map do
-      Material.new :metal, 2000
+      klass.new :metal, 2000
     end
   end
   
   bm.report 'Light Keep .intern' do
+    klass = Class.new Material
     TIMES.times.map do
-      Material.intern :metal, 2000
+      klass.intern :metal, 2000
     end
   end
 
   bm.report 'Heavy Instant .new' do
+    klass = Class.new Material
     TIMES.times do
-      Material.new :metal, 2000, HeavyParts.new
+      klass.new :metal, 2000, HeavyParts.new
     end
   end
   
   bm.report 'Heavy Instant .intern' do
+    klass = Class.new Material
     TIMES.times do
-      Material.intern :metal, 2000, HeavyParts.new
+      klass.intern :metal, 2000, HeavyParts.new
     end
   end
   
   bm.report 'Heavy Keep .new' do
+    klass = Class.new Material
     TIMES.times.map do
-      Material.new :metal, 2000, HeavyParts.new
+      klass.new :metal, 2000, HeavyParts.new
     end
   end
   
   bm.report 'Heavy Keep .intern' do
+    klass = Class.new Material
     TIMES.times.map do
-      Material.intern :metal, 2000, HeavyParts.new
+      klass.intern :metal, 2000, HeavyParts.new
     end
   end
 end

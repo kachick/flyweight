@@ -23,6 +23,8 @@ class TestBasicCase < Test::Unit::TestCase
     c = Material.new    :metal, 2000
     d = Material.intern :paper, 50
     e = SubMaterial.intern :metal, 2000
+    Material.flush
+    f = Material.intern :metal, 2000
     
     assert_equal b, a
     assert_same b, a
@@ -42,6 +44,9 @@ class TestBasicCase < Test::Unit::TestCase
     assert_same true, hash[c]
     assert_nil hash[d]
     assert_nil hash[e]
+    
+    assert_equal f, a
+    assert_same false, f.equal?(a)
   end
   
   def test_class_clone

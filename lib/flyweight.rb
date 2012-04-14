@@ -37,31 +37,39 @@ module Flyweight
 
     alias_method :value_for, :intern
     
+    def flush
+      Flyweight.flush_pool! self
+    end
+    
     private
     
     def inherited(klass)
-      Flyweight.define_pool! klass
+      Flyweight.prepare_pool! klass
     end
     
     def _pool
       if singleton_class.const_defined? POOL_NAME, false
         singleton_class.const_get POOL_NAME
       else
-        Flyweight.define_pool! self
+        Flyweight.prepare_pool! self
       end
     end
   end
 
   class << self
-    def define_pool!(mod)
+    def prepare_pool!(mod)
       mod.singleton_class.const_set POOL_NAME, {}
     end
-    
+
+    def flush_pool!(mod)
+      mod.singleton_class.const_get(POOL_NAME).clear
+    end
+
     private
     
     def included(mod)
       mod.extend Eigen
-      define_pool! mod
+      prepare_pool! mod
     end
   end
 

@@ -44,4 +44,10 @@ class TestBasicCase < Test::Unit::TestCase
     assert_nil hash[e]
   end
   
+  def test_class_clone
+    klass1, klass2 = Material.clone, Material.clone
+    assert_same false, klass1.equal?(klass2)
+    assert_same false, klass1.new(:metal, 2000).equal?(klass2.new(:metal, 2000))
+    assert_same false, klass1.intern(:metal, 2000).equal?(klass2.intern(:metal, 2000))
+  end
 end

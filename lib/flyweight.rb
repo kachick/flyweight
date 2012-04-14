@@ -23,7 +23,7 @@
 #   a == d     #=> false
 #   a.equal? d #=> false
 module Flyweight
-  VERSION = '0.0.2'.freeze
+  VERSION = '0.0.3.a'.freeze
   POOL_NAME = :FLYWEIGHT_POOL
   
   module Eigen
@@ -54,8 +54,6 @@ module Flyweight
     private
     
     def included(mod)
-      raise ArgumentError unless mod.kind_of? ::Module
-      
       mod.module_eval do
         extend Eigen
         singleton_class.const_set POOL_NAME, {}

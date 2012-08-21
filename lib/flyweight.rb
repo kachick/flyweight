@@ -27,16 +27,15 @@ require_relative 'flyweight/singletonclass'
 #   a == d     #=> false
 #   a.equal? d #=> false
 module Flyweight
-
-  POOL_NAME = :FLYWEIGHT_POOL
   
   def eql?(other)
-    self.class == other.class &&
+    (other.instance_of? self.class) &&
       _comparable.__send__(__callee__, other._comparable)
   end
   
   alias_method :==, :eql?
   
+  # @return [Integer]
   def hash
     _comparable.inject(0){|sum, val|val.hash ^ sum}
   end

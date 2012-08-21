@@ -2,32 +2,43 @@ module Flyweight
 
   module ClassMethods
 
+    # @return [Flyweight] new instance
     def intern(*values)
-      if (pool = _pool).has_key? values
-        pool[values]
+      if _pool.has_key? values
+        _pool.fetch values
       else
-        pool[values] = new(*values)
+        _pool[values] = new(*values)
       end
     end
 
     alias_method :value_for, :intern
-    
-    def flush
-      Flyweight.flush_pool! self
+
+    # @return [Hash]
+    def pool
+      @_pool.dup
     end
+  
+    # @return [Hash]
+    def flush_pool
+      @_pool.clear
+    end
+
+    alias_method :flush, :flush_pool
     
+    protected
+
+    def replace_pool
+      @_pool = {}
+    end
+
     private
     
     def inherited(klass)
-      Flyweight.prepare_pool! klass
+      klass.replace_pool
     end
     
     def _pool
-      if singleton_class.const_defined? POOL_NAME, false
-        singleton_class.const_get POOL_NAME
-      else
-        Flyweight.prepare_pool! self
-      end
+      @_pool ||= {}
     end
   
   end

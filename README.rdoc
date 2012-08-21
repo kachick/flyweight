@@ -1,20 +1,18 @@
 = Flyweight
 
-* http://github.com/kachick/flyweight
-* http://rubygems.org/gems/flyweight
-* http://rubyforge.org/projects/flyweight
+{<img src="https://secure.travis-ci.org/kachick/flyweight.png" />}[http://travis-ci.org/kachick/flyweight]
 
 == Description
 
-A tiny template for the "Flyweight Pattern"
+A tiny template for the "Flyweight Pattern".
 
 == Usage
 
-* setup
+* Setup
 
     require 'flyweight'
 
-* overview
+* Overview
 
     class Material
       include Flyweight
@@ -38,18 +36,24 @@ A tiny template for the "Flyweight Pattern"
 == Requirements
 
 * Ruby 1.9.2 or later
-  
-  target release versions
-  
-  * 1.9.3-p125
-  * 1.9.2-p290
 
 == Installation
 
-* gem install flyweight
+    gem install flyweight
+
+== Links
+
+code   :: https://github.com/kachick/flyweight
+issues :: https://github.com/kachick/flyweight/issues
+CI     :: http://travis-ci.org/#!/kachick/flyweight
+gem    :: https://rubygems.org/gems/flyweight
+gem+   :: http://metagem.info/gems/flyweight
 
 == License
 
-Copyright (C) 2012  Kenichi Kamiya
+The MIT X License
 
-The MIT/X11 License (See the file LICENSE)
+Copyright (c) 2012 Kenichi Kamiya
+
+See the file LICENSE for further details.
+

@@ -5,7 +5,7 @@ Gem::Specification.new do |gem|
   gem.email         = ['kachick1+ruby@gmail.com']
   gem.description   = %q{A tiny template for the "Flyweight Pattern".}
   gem.summary       = %q{A tiny template for the "Flyweight Pattern".}
-  gem.homepage      = 'https://kachick.github.com/flyweight'
+  gem.homepage      = 'http://kachick.github.com/flyweight/'
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

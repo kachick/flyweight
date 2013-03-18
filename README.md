@@ -53,7 +53,7 @@ $ gem install flyweight
 Link
 ----
 
-* [Home](https://kachick.github.com/flyweight)
+* [Home](http://kachick.github.com/flyweight/)
 * [code](https://github.com/kachick/flyweight)
 * [API](http://kachick.github.com/flyweight/yard/frames.html)
 * [issues](https://github.com/kachick/flyweight/issues)

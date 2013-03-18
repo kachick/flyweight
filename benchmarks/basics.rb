@@ -80,4 +80,3 @@ Benchmark.bm do |bm|
     end
   end
 end
-

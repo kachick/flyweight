@@ -5,7 +5,7 @@
 
 require_relative 'flyweight/version'
 require_relative 'flyweight/classmethods'
-require_relative 'flyweight/singletonclass'
+require_relative 'flyweight/singleton_class'
 
 # @example
 #   class Material

@@ -1,8 +1,9 @@
 flyweight
 =============
 
-[![Build Status](https://secure.travis-ci.org/kachick/flyweight.png)](http://travis-ci.org/kachick/flyweight)
-[![Gem Version](https://badge.fury.io/rb/flyweight.png)](http://badge.fury.io/rb/flyweight)
+* ***This repository is archived***
+* ***No longer maintained***
+* ***All versions have been yanked from https://rubygems.org/ for releasing valuable namespace for others***
 
 Description
 -----------
@@ -12,7 +13,7 @@ A tiny template for the "Flyweight Pattern".
 Features
 --------
 
-* MyClass.intern 
+* MyClass.intern
 
 Usage
 -----
@@ -41,24 +42,7 @@ a.equal? d #=> false
 Requirements
 -------------
 
-* [Ruby 1.9.2 or later](http://travis-ci.org/#!/kachick/flyweight)
-
-Install
--------
-
-```bash
-$ gem install flyweight
-```
-
-Link
-----
-
-* [Home](http://kachick.github.com/flyweight/)
-* [code](https://github.com/kachick/flyweight)
-* [API](http://kachick.github.com/flyweight/yard/frames.html)
-* [issues](https://github.com/kachick/flyweight/issues)
-* [CI](http://travis-ci.org/#!/kachick/flyweight)
-* [gem](https://rubygems.org/gems/flyweight)
+* Ruby 1.9.2 or later
 
 License
 --------
